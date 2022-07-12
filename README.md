@@ -1,8 +1,6 @@
 
 # MS-Hackathon
 
-# URL = https://ms.goyal.club
-
 The MongoDB database is hosted on Microsoft Azure which is scalable.  
 
 The application uses Azure to auto-scale and provide quality reliable hosting.   
