@@ -1,0 +1,7 @@
+ Flask==1.1.1
+ minio
+ pymongo
+ dnspython
+ bcrypt
+ requests
+ simplejson

@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "regions": ["bom1"],
+  "env": { "MONGO_URI": "@mongo-url", "FLASK_SECRET_KEY": "@flask-secret-key" },
+  "builds": [{ "src": "app.py", "use": "@now/python" }],
+  "routes": [{ "src": "/(.*)", "dest": "app.py" }]
+}
