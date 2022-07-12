@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.6/plyr.css" />
+    <style>
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <title>MyApp</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light navbar-expand-md bg-light navigation-clean">
+      <div class="container">
+        <a class="navbar-brand" href="/">parkMyCar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <li class="navbar-nav dropdown ">
+            <a class="btn btn-primary ml-auto dropdown-toggle" role="button" data-toggle="dropdown" href="/operator/login"> Weclome User</a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="/operator/dashboard">Dashboard</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <div id="container">
+      <style>
+        a {
+          text-decoration: none;
+        }
+        a:hover {
+          text-decoration: none;
+          cursor: pointer;
+        }
+      </style>
+      <body>
+        <div class="text-center">
+          <h1>Welcome To Your Parking Base</h1>
+          <h2>Your Parking Name</h2>
+          <h3>Total Number of Vacant spaces : <span id="number"> {{ available_spaces }} </span></h3>
+          <h3>Total Number of Spaces : <span id="total"> {{ total_space }} </span></h3>
+          <button id="add">Add Vacant Spaces</button>
+          <button id="subtract">Subtract Occupied Spaces</button>
+          <p><a href="/logout">Log Out</a></p>
+        </div>
+      </body>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/assets/dashboard.js"></script>
+  </body>
+</html>

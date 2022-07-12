@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <style>
+      html,
+      body,
+      #map {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0;
+      }
+    </style>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://apis.mapmyindia.com/advancedmaps/v1/8sd157d6dfneikj3hbkgltzbhsdvh45o/map_load?v=1.3"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">parkMyCar</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link active js-scroll-trigger" href="/public">CLIENT INTERFACE</a></li>
+            <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="/operator/login">PARKING OWNERS</a></li>
+            <li class="nav-item nav-link js-scroll-trigger" role="presentation">
+              <button class="btn btn-primary" onclick="route()">Draw route</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="map"></div>
+
+    <!-- <button onclick="removeRoute()">Remove route</button> -->
+
+    <div style="display: none;">
+      <div id="s_lat">{{ s_lon }}</div>
+      <div id="s_lon">{{ s_lat }}</div>
+      <div id="e_lat">{{ e_lon }}</div>
+      <div id="e_lon">{{ e_lat }}</div>
+    </div>
+    <script>
+      let startlat = document.querySelector('#s_lat').innerText;
+      let startlong = document.querySelector('#s_lon').innerText;
+      let destlat = document.querySelector('#e_lat').innerText;
+      let destlong = document.querySelector('#e_lon').innerText;
+      console.log(startlat);
+      var map;
+      var pts1;
+      var poly1;
+      url = 'https://apis.mapmyindia.com/advancedmaps/v1/8sd157d6dfneikj3hbkgltzbhsdvh45o/route_adv/driving/' + startlat + ',' + startlong + ';' + destlat + ',' + destlong + '?alternatives=true&&geometries=polyline&overview=full&exclude=&steps=true&region=ind';
+      console.log(url);
+      // draw map
+      map = new MapmyIndia.Map('map', {
+        center: [28.61, 77.23],
+        zoom: 9
+      });
+
+      // decode function
+      function decode_path(encoded) {
+        if (encoded != 'undefined') {
+          var pts = [];
+          var index = 0,
+            len = encoded.length;
+          var lat = 0,
+            lng = 0;
+          while (index < len) {
+            var b,
+              shift = 0,
+              result = 0;
+            do {
+              b = encoded.charAt(index++).charCodeAt(0) - 63;
+              result |= (b & 0x1f) << shift;
+              shift += 5;
+            } while (b >= 0x20);
+
+            var dlat = (result & 1) != 0 ? ~(result >> 1) : result >> 1;
+            lat += dlat;
+            shift = 0;
+            result = 0;
+            do {
+              b = encoded.charAt(index++).charCodeAt(0) - 63;
+              result |= (b & 0x1f) << shift;
+              shift += 5;
+            } while (b >= 0x20);
+            var dlng = (result & 1) != 0 ? ~(result >> 1) : result >> 1;
+            lng += dlng;
+            pts.push([lat / 1e5, lng / 1e5]);
+          }
+          return pts;
+        } else {
+          return '';
+        }
+      }
+
+      // call route api using Jsonp
+      function route() {
+        $.ajax({
+          data: 'text/json,application/json',
+          contentType: 'application/json,text/json',
+          dataType: 'jsonp',
+          type: 'GET',
+          crossDomain: true,
+          url: 'https://apis.mapmyindia.com/advancedmaps/v1/8sd157d6dfneikj3hbkgltzbhsdvh45o/route_adv/driving/' + startlat + ',' + startlong + ';' + destlat + ',' + destlong + '?alternatives=true&&geometries=polyline&overview=full&exclude=&steps=true&region=ind',
+          error: function(data) {
+            console.log(data);
+            //alert('An error has occurred');
+          },
+          success: this.scriptCallback
+        });
+      }
+      // callback function
+      scriptCallback = function(data) {
+        pts1 = decode_path(data.routes[0].geometry);
+        // Draw polyline
+        poly1 = new L.Polyline(pts1, { weight: 5, opacity: 1, color: 'black' });
+        map.addLayer(poly1);
+        map.fitBounds(poly1.getBounds());
+      };
+
+      // Remove Route function
+      function removeRoute() {
+        map.removeLayer(poly1);
+        map.setZoom(12);
+      }
+    </script>
+  </body>
+</html>

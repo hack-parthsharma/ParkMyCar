@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.6/plyr.css" />
+    <style>
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <title>parkMyCar</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light navbar-expand-md bg-light navigation-clean">
+      <div class="container">
+        <a class="navbar-brand" href="/">parkMyCar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <li class="navbar-nav dropdown ">
+            <a class="btn btn-primary ml-auto dropdown-toggle" role="button" data-toggle="dropdown" href="/accounts/login"> Login </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="/operator/login">Login</a>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <div id="container">
+      <div class="container mt-2">
+        <div class="row">
+          <div class="col-lg-6 mx-auto">
+            <main role="main">
+              <h1 class="text-center">Sign In</h1>
+              <hr />
+
+              <div class="row">
+                <div class="col">
+                  <form method="post" action="/operator/login">
+                    <div id="div_id_login" class="form-group">
+                      <label for="id_login" class="col-form-label  requiredField"> Username<span class="asteriskField">*</span> </label>
+                      <div class=""><input type="text" name="username" placeholder="Username" autofocus="autofocus" class="textinput textInput form-control" required id="id_login" /></div>
+                    </div>
+                    <div id="div_id_password" class="form-group">
+                      <label for="id_password" class="col-form-label  requiredField"> Password<span class="asteriskField">*</span> </label>
+                      <div class=""><input type="password" name="password" placeholder="Password" class="textinput textInput form-control" required id="id_password" /></div>
+                    </div>
+
+                    <br />
+                    <button class="btn btn-success btn-block" type="submit">Sign In</button>
+                  </form>
+                  <br />
+                  <div class="text-center">
+                    <p>Don't have an account? <a href="/operator/signup">Sign up</a></p>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

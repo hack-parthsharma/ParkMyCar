@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.6/plyr.css" />
+    <style>
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <title>MyApp</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light navbar-expand-md bg-light navigation-clean">
+      <div class="container">
+        <a class="navbar-brand" href="/">parkMyCar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <li class="navbar-nav dropdown ">
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="/dashboard">Dashboard</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="width: 20%;">
+      <div class="text-center">
+        <h1>Sign Up Your Parking Lot</h1>
+
+        <form method="post" action="/operator/signup">
+          <div id="div_id_login" class="form-group">
+            <label for="id_logina" class="col-form-label  requiredField"> Username<span class="asteriskField">*</span> </label>
+            <div class="">
+              <input type="text" name="username" placeholder="Username" autofocus="autofocus" class="textinput textInput form-control" required id="id_logina" />
+            </div>
+          </div>
+
+          <div id="div_id_password" class="form-group">
+            <label for="id_password" class="col-form-label  requiredField"> Password* </label>
+            <div class=""><input type="password" name="password" placeholder="Password" class="textinput textInput form-control" required id="id_password" /></div>
+          </div>
+
+          <div id="div_id_address" class="form-group">
+            <label for="id_loginb" class="col-form-label  requiredField"> Address<span class="asteriskField">*</span> </label>
+            <div class="">
+              <input type="text" name="address" value="Connaught Place" placeholder="Put Your Parking's Address Here" autofocus="autofocus" class="textinput textInput form-control" required id="id_loginb" />
+            </div>
+          </div>
+
+          <div id="div_id_cost" class="form-group">
+            <label for="id_loginc" class="col-form-label  requiredField"> Cost Per Hour<span class="asteriskField">*</span> </label>
+            <div class="">
+              <input type="number" name="cost_per_hour" value="10" placeholder="Put Your Parking Rates per hour" autofocus="autofocus" class="textinput textInput form-control" required id="id_loginc" />
+            </div>
+          </div>
+
+          <div id="div_id_cap" class="form-group">
+            <label for="id_logind" class="col-form-label  requiredField"> Total Capacity<span class="asteriskField">*</span> </label>
+            <div class="">
+              <input type="number" name="capacity" value="100" placeholder="Total Capacity of Lot" autofocus="autofocus" class="textinput textInput form-control" required id="id_logind" />
+            </div>
+          </div>
+
+          <button class="btn btn-success btn-block" type="submit">Sign Up</button>
+        </form>
+
+        <a href="/operator/login">Existing User? Login here</a>
+      </div>
+    </div>
+  </body>
+</html>
