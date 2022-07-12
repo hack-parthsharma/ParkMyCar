@@ -1,0 +1,1 @@
+Contains the css files, js scripts and image assets

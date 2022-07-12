@@ -1,0 +1,190 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  display: flex;
+  background-color: black;
+  color: white;
+  text-shadow: 2px 2px 10px white;
+  /* margin:0 auto; */
+  align-items: center;
+  justify-content: center;
+}
+#b1,
+#b2,
+#b3,
+#b3 {
+  position: relative;
+  margin: 0;
+}
+#b1 {
+  animation: blink infinite 10s running forwards ease-in-out;
+}
+#b2 {
+  animation: blink infinite 12s running forwards ease-in;
+}
+#b3 {
+  animation: blink infinite 40s running forwards ease-in-out;
+}
+#b4 {
+  animation: blink infinite 5s running forwards ease-out;
+}
+#header-title {
+  width: 100%;
+  height: 125px;
+  justify-content: center;
+  padding-left: 20px;
+  text-align: left;
+  font-size: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+#navbar {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  position: relative;
+}
+
+#mainMap {
+  /* margin: 0; */
+  padding: 0;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  height: 700px;
+}
+
+#mainMap:hover {
+  animation: scale-up 0.25s 1 forwards ease-in-out;
+}
+
+.map_marker {
+  position: relative;
+  width: 100px;
+  height: 48px;
+}
+
+#bookingOptions {
+  position: relative;
+  padding-top: 100px;
+  display: block;
+}
+
+#reserved,
+#schedule {
+  width: 500px;
+  height: 500px;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  position: relative;
+  font-size: 50px;
+  color: white;
+  padding: 10px;
+}
+
+#reserved {
+  /* width:500px; */
+  margin-top: 0;
+  background-color: red;
+  margin-left: 100px;
+  margin-right: auto;
+}
+#schedule {
+  margin-top: 0;
+  background-color: blue;
+  margin-right: 100px;
+  margin-left: auto;
+}
+#schedule:hover,
+#reserved:hover {
+  animation: scale-up 0.25s 1 forwards ease-in-out;
+}
+@keyframes scale-up {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  100% {
+    transform: scale(1.02);
+    box-shadow: 5px 10px 10px #888888;
+  }
+}
+
+.popper {
+  opacity: 0;
+  animation: pop-up 1s 1 ease-in-out forwards running;
+  animation-delay: 0.5s;
+}
+
+.info_css {
+  color: #000;
+  text-decoration: none;
+  background-color: #fff;
+  width: 270px;
+  padding: 5px;
+  font-size: 12px;
+}
+div.header {
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+  position: relative;
+  background-color: lightblue;
+  color: brown;
+  line-height: 20px;
+  font-size: 13px;
+  vertical-align: middle;
+  padding: 5px 35px 5px 5px;
+}
+
+@keyframes pop-up {
+  0% {
+    opacity: 0;
+    transform: translate(0, 10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  10.999%,
+  26%,
+  45.999%,
+  50%,
+  55.999%,
+  79%,
+  81.999%,
+  95%,
+  99.999% {
+    opacity: 1;
+    text-shadow: 2px 2px 10px white;
+  }
+  11%,
+  25.999%,
+  46%,
+  49.999%,
+  56%,
+  78.999%,
+  82%,
+  94.999%,
+  100% {
+    opacity: 0.2;
+    text-shadow: 2px 2px 2px grey;
+  }
+}
